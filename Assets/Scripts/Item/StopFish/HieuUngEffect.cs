@@ -19,7 +19,8 @@ public class HieuUngEffect : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        // Dùng unscaledDeltaTime để hiệu ứng chạy đúng kể cả khi timeScale = 0
+        timer += Time.unscaledDeltaTime;
         float t = timer / duration;
 
         // Phóng to

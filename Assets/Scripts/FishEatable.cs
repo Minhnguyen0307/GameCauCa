@@ -18,7 +18,19 @@ public class FishEatable : MonoBehaviour
     {
         if (!isVisible) return;
 
+        // Cá mập ăn được tất cả cá (trừ Orca)
         if (other.CompareTag("Shark"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    // Hỗ trợ cả trường hợp Shark dùng Collider vật lý
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!isVisible) return;
+
+        if (collision.collider.CompareTag("Shark"))
         {
             Destroy(gameObject);
         }

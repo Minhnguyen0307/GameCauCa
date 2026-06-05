@@ -207,8 +207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24fc03f227f8ee4fb5980fcdf96197a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Catchable
-  fishType: 1
-  scoreValue: 0
+  scoreValue: 3
+  catchChance: 0.85
+  shakeDuration: 0.15
+  shakeStrength: 0.1
 --- !u!114 &6917045212584382521
 MonoBehaviour:
   m_ObjectHideFlags: 0

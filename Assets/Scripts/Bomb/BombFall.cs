@@ -6,6 +6,9 @@ public class BombFall : MonoBehaviour
     private float bottomY;
     private bool stopped = false;
 
+    // Cho Bomb.cs đọc trạng thái
+    public bool IsStopped => stopped;
+
     void Start()
     {
         bottomY = Camera.main.ViewportToWorldPoint(

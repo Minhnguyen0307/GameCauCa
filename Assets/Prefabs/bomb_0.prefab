@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: -462334928108937459}
   - component: {fileID: -1462699281075953317}
   - component: {fileID: 7997232450419982666}
-  - component: {fileID: -5785902626676957673}
   m_Layer: 0
   m_Name: bomb_0
   m_TagString: Bomb
@@ -285,41 +284,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
   damage: 1
-  explosionRadius: 3.5
+  explosionRadius: 4
   explosionEffectPrefab: {fileID: 592254438794623667, guid: d8fa3a0b124fa6d41869fade5941b26a, type: 3}
---- !u!58 &-5785902626676957673
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8637634583194292597}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 4.8249993

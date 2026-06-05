@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d414f6686a7fdb54494d4577fc88a81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrcaMove
-  speed: 0.75
+  speed: 1.25
 --- !u!50 &-6920652810701909278
 Rigidbody2D:
   serializedVersion: 5
@@ -206,8 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24fc03f227f8ee4fb5980fcdf96197a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Catchable
-  fishType: 6
-  scoreValue: 0
+  scoreValue: 150
+  catchChance: 0.005
+  shakeDuration: 0.15
+  shakeStrength: 0.1
 --- !u!114 &-2050661709072356155
 MonoBehaviour:
   m_ObjectHideFlags: 0
