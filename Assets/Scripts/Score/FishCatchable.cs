@@ -1,84 +1,80 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class FishCatchable : MonoBehaviour
 {
-    public FishType fishType;
-    public int scoreValue;
+    public int scoreValue = 10;
 
-    float catchChance;
+    [Range(0f, 1f)]
+    public float catchChance = 0.5f;
 
-    void Start()
-    {
-        switch (fishType)
-        {
-            case FishType.Fish:
-                catchChance = 0.99f;
-                scoreValue = 1;
-                break;
+    public float shakeDuration = 0.15f;
+    public float shakeStrength = 0.1f;
 
-            case FishType.SevenColorFish:
-                catchChance = 0.75f;
-                scoreValue = 3;
-                break;
+    private bool isCaught = false;
+    private Coroutine shakeCoroutine;
 
-            case FishType.Crab:
-                catchChance = 0.60f;
-                scoreValue = 10;
-                break;
-
-            case FishType.Octopus:
-                catchChance = 0.50f;
-                scoreValue = 20;
-                break;
-
-            case FishType.SpecialFish:
-                catchChance = 0.30f;
-                scoreValue = 40;
-                break;
-
-            case FishType.Shark:
-                catchChance = 0.06f;
-                scoreValue = 70;
-                break;
-
-            case FishType.Orca:
-                catchChance = 0.005f;
-                scoreValue = 100;
-                break;
-        }
-    }
-
+    // =========================
+    // BẮT CÁ BÌNH THƯỜNG
+    // =========================
     public void TryCatch()
     {
-        float rand = Random.value;
+        if (isCaught) return;
 
-        if (rand <= catchChance)
+        if (Random.value <= catchChance)
         {
-            ScoreManager.Instance.AddScore(scoreValue);
-            Destroy(gameObject);
+            Catch();
         }
         else
         {
-            StartCoroutine(Shake());
+            PlayShake();
         }
     }
 
-    IEnumerator Shake()
+    // =========================
+    // BẮT 100% (ITEM MU)
+    // =========================
+    public void ForceCatch()
     {
-        Vector3 startPos = transform.position;
-        float duration = 0.15f;
-        float strength = 0.12f;
+        if (isCaught) return;
+        Catch();
+    }
 
-        float t = 0;
-        while (t < duration)
+    void Catch()
+    {
+        isCaught = true;
+
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.AddScore(scoreValue);
+
+        Destroy(gameObject);
+    }
+
+    // =========================
+    void PlayShake()
+    {
+        if (shakeCoroutine != null)
+            StopCoroutine(shakeCoroutine);
+
+        shakeCoroutine = StartCoroutine(ShakeCoroutine());
+    }
+
+    IEnumerator ShakeCoroutine()
+    {
+        Vector3 startPos = transform.position; // ✅ LẤY VỊ TRÍ HIỆN TẠI
+
+        float timer = 0f;
+        while (timer < shakeDuration)
         {
-            t += Time.deltaTime;
-            float xOffset = Random.Range(-strength, strength);
-            transform.position = startPos + new Vector3(xOffset, 0, 0);
+            timer += Time.deltaTime;
+
+            float x = Random.Range(-shakeStrength, shakeStrength);
+            float y = Random.Range(-shakeStrength, shakeStrength);
+
+            transform.position = startPos + new Vector3(x, y, 0f);
             yield return null;
         }
 
-        transform.position = startPos;
+        transform.position = startPos; // ✅ TRẢ VỀ ĐÚNG CHỖ ĐANG ĐỨNG
     }
 }
