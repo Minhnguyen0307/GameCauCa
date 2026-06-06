@@ -1218,6 +1218,56 @@ MonoBehaviour:
   spawnDelay: 5
   minY: -3
   maxY: 3
+--- !u!1 &999197601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999197603}
+  - component: {fileID: 999197602}
+  m_Layer: 0
+  m_Name: KrakenSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &999197602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999197601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2f1551e0578b048a9dc4f77d0ed392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KrakenSpawner
+  krakenPrefab: {fileID: 2988457846266956772, guid: e05f12d684d408f41b8af483718613de, type: 3}
+  spawnDistance: 100
+  spawnInterval: 15
+  spawnOnStart: 1
+  minY: -2
+  maxY: 2
+--- !u!4 &999197603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999197601}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.02552, y: -0.0379, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1024432232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,8 +2319,8 @@ Transform:
   m_GameObject: {fileID: 1998866670}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1354, y: 0, z: 0}
-  m_LocalScale: {x: 7.560591, y: 5.567679, z: 1}
+  m_LocalPosition: {x: 0.0151, y: 0, z: 0}
+  m_LocalScale: {x: 7.5954466, y: 5.567679, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2294,3 +2344,4 @@ SceneRoots:
   - {fileID: 1159598717}
   - {fileID: 1579002992}
   - {fileID: 583165952}
+  - {fileID: 999197603}

@@ -57,7 +57,7 @@ public class Bomb : MonoBehaviour
             if (damagedObjects.Contains(root)) continue;
             damagedObjects.Add(root);
 
-            // Chỉ damage qua Health — tôn trọng HP đã cài đặt
+            // Chỉ damage qua Healt
             Health hp = root.GetComponentInChildren<Health>();
             if (hp != null)
             {
