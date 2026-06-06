@@ -92,10 +92,12 @@ public class XoayNuocEffect : MonoBehaviour
         if (obj == krakenMove?.gameObject) return false;  // không ăn chính mình
 
         return obj.CompareTag("Fish")
+            || obj.CompareTag("SevenColorFish")
             || obj.CompareTag("Crab")
             || obj.CompareTag("Octopus")
             || obj.CompareTag("SpecialFish")
-            || obj.CompareTag("AceFish")
+            || obj.CompareTag("Shark")
+            || obj.CompareTag("Orca")
             || obj.GetComponent<FishCatchable>() != null
             || obj.GetComponent<FishEatable>() != null;
     }

@@ -133,10 +133,12 @@ public class KrakenMove : MonoBehaviour
         if (target == null || target == gameObject) return;
 
         bool isFish = target.CompareTag("Fish")
+                   || target.CompareTag("SevenColorFish")
                    || target.CompareTag("Crab")
                    || target.CompareTag("Octopus")
                    || target.CompareTag("SpecialFish")
-                   || target.CompareTag("AceFish")
+                   || target.CompareTag("Shark")
+                   || target.CompareTag("Orca")
                    || target.GetComponent<FishCatchable>() != null
                    || target.GetComponent<FishEatable>() != null;
 
