@@ -6,12 +6,10 @@ public class SharkMove : MonoBehaviour
 
     void Update()
     {
+        if (FishFreezeManager.Instance != null && FishFreezeManager.Instance.IsFrozen)
+            return;
+
         transform.Translate(Vector3.left * speed * Time.deltaTime);
-
-        //if (FishFreezeManager.Instance.IsFrozen)
-        //    return;
-
-        //transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
 
 

@@ -19,13 +19,16 @@ public class FishSpawner : MonoBehaviour
     {
         for (int i = 0; i < fishCount; i++)
         {
-            Vector3 spawnPos = new Vector3(
-                -10f, // xuất hiện từ bên trái (bạn đổi nếu cần)
-                Random.Range(minY, maxY),
-                0f
-            );
+            if (FishFreezeManager.Instance == null || !FishFreezeManager.Instance.IsFrozen)
+            {
+                Vector3 spawnPos = new Vector3(
+                    -10f,
+                    Random.Range(minY, maxY),
+                    0f
+                );
 
-            Instantiate(fishPrefab, spawnPos, Quaternion.identity);
+                Instantiate(fishPrefab, spawnPos, Quaternion.identity);
+            }
 
             yield return new WaitForSeconds(spawnDelay);
         }

@@ -23,6 +23,9 @@ public class SharkSpawner : MonoBehaviour
 
     void SpawnShark()
     {
+        if (FishFreezeManager.Instance != null && FishFreezeManager.Instance.IsFrozen)
+            return;
+
         Camera cam = Camera.main;
         float cameraRight =
             cam.transform.position.x + cam.orthographicSize * cam.aspect;
