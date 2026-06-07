@@ -405,6 +405,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50302eea0396e1f48b7d8a5e63d5e0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
+  timeRemaining: 120
+  timerIsRunning: 0
+  timerText: {fileID: 0}
+  timeUpPanel: {fileID: 0}
+  finalScoreText: {fileID: 0}
 --- !u!1 &443407782
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0ff3e3b74cd7d45aed9b4712ab8538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  timeRemaining: 5
+  timeRemaining: 180
   timerIsRunning: 0
   timerText: {fileID: 2049485591}
   timeUpPanel: {fileID: 855362967}
@@ -871,7 +876,7 @@ GameObject:
   - component: {fileID: 583165950}
   - component: {fileID: 583165949}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas (Pause)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1517,7 +1522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishSpawner
   fishPrefab: {fileID: 3404758752971098195, guid: 959d6c250687caf408df09bb3db7d9d8, type: 3}
   fishCount: 100
-  spawnDelay: 5
+  spawnDelay: 3
   minY: -3
   maxY: 3
 --- !u!114 &910769298
@@ -1533,8 +1538,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishSpawner
   fishPrefab: {fileID: 7858626472986975093, guid: eea1d066e7de7bb4ab6bcc09ce410121, type: 3}
-  fishCount: 20
-  spawnDelay: 5
+  fishCount: 200
+  spawnDelay: 3
   minY: -3
   maxY: 3
 --- !u!1 &935614413
@@ -1705,7 +1710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KrakenSpawner
   krakenPrefab: {fileID: 2988457846266956772, guid: e05f12d684d408f41b8af483718613de, type: 3}
   spawnDistance: 100
-  spawnInterval: 15
+  spawnInterval: 55
   spawnOnStart: 1
   minY: -2
   maxY: 2
@@ -2036,7 +2041,7 @@ GameObject:
   - component: {fileID: 1159598715}
   - component: {fileID: 1159598714}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas (Time's up and Score)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2711,7 +2716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -20}
+  m_AnchoredPosition: {x: 7, y: 3}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1714216079
@@ -2985,7 +2990,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: -20}
+  m_AnchoredPosition: {x: -60, y: 5}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &2049485590
@@ -3016,7 +3021,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time: 02:00'
+  m_text: 'Time: 03:00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

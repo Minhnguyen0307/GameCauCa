@@ -23,6 +23,9 @@ public class SpecialFishSpawner : MonoBehaviour
 
     void SpawnSpecialFish()
     {
+        if (FishFreezeManager.Instance != null && FishFreezeManager.Instance.IsFrozen)
+            return;
+
         Camera cam = Camera.main;
 
         float cameraRight =

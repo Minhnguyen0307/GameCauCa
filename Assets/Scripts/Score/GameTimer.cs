@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour
 {
-    public float timeRemaining = 5f;
+    public float timeRemaining = 120f;
     public bool timerIsRunning = false;
 
     [Header("UI Reference")]
@@ -28,7 +28,7 @@ public class GameTimer : MonoBehaviour
         {
             if (timeRemaining > 0)
             {
-                timeRemaining -= Time.deltaTime;
+                timeRemaining -= Time.unscaledDeltaTime;
                 DisplayTime(timeRemaining);
             }
             else

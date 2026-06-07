@@ -14,6 +14,9 @@ public class SpecialFishMove : MonoBehaviour
 
     void Update()
     {
+        if (FishFreezeManager.Instance != null && FishFreezeManager.Instance.IsFrozen)
+            return;
+
         transform.Translate(Vector3.left * speed * Time.deltaTime);
 
         float cameraLeft =

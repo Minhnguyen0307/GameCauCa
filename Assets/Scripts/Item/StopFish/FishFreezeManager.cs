@@ -6,6 +6,7 @@ public class FishFreezeManager : MonoBehaviour
     public static FishFreezeManager Instance;
 
     private bool isFreezing = false;
+    public bool IsFrozen => isFreezing;
 
     void Awake()
     {
@@ -26,10 +27,7 @@ public class FishFreezeManager : MonoBehaviour
         // 🔹 RUNG CAMERA NGAY LẬP TỨC
         CameraShake.Instance.Shake();
 
-        // 🔹 DỪNG THỜI GIAN
-        Time.timeScale = 0f;
-
-        // 🔹 BỘ ĐẾM NGƯỢC 5s
+        // 🔹 BỘ ĐẾM NGƯỢC (dùng unscaled vì không còn dừng timeScale)
         float timer = duration;
         while (timer > 0)
         {
@@ -39,7 +37,6 @@ public class FishFreezeManager : MonoBehaviour
         }
 
         // 🔹 HẾT ĐÓNG BĂNG
-        Time.timeScale = 1f;
         isFreezing = false;
     }
 }

@@ -17,11 +17,10 @@ public class StopFishItem : MonoBehaviour
 
     IEnumerator FreezeFish()
     {
-        Time.timeScale = 0f;      // Dừng toàn game
+        // Freeze cá qua FishFreezeManager, không đụng timeScale
+        FishFreezeManager.Instance.FreezeAllFish(freezeTime);
 
         yield return new WaitForSecondsRealtime(freezeTime);
-
-        Time.timeScale = 1f;      // Chạy lại
 
         Destroy(gameObject);      // Xóa item
     }

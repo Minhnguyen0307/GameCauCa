@@ -6,11 +6,9 @@ public class OrcaMove : MonoBehaviour
 
     void Update()
     {
+        if (FishFreezeManager.Instance != null && FishFreezeManager.Instance.IsFrozen)
+            return;
+
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        //if (FishFreezeManager.Instance.IsFrozen)
-        //    return;
-
-        //transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
 }
