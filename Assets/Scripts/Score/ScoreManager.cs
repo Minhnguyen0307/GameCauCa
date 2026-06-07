@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
@@ -12,12 +12,17 @@ public class ScoreManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            if (scoreText != null)
+            {
+                Instance.scoreText = this.scoreText;
+                Instance.UpdateUI();
+            }
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // ⚠️ RẤT QUAN TRỌNG
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -32,7 +37,7 @@ public class ScoreManager : MonoBehaviour
         UpdateUI();
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         if (scoreText != null)
             scoreText.text = "Score: " + score;
