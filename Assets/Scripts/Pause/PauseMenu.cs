@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -18,6 +19,29 @@ public class PauseMenu : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        // Ensure panel is hidden at start
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
+        isPaused = false;
+    }
+
+    private void Update()
+    {
+        // Toggle pause when ESC or P is pressed (New Input System)
+        var keyboard = Keyboard.current;
+        if (keyboard != null)
+        {
+            if (keyboard.escapeKey.wasPressedThisFrame || keyboard.pKey.wasPressedThisFrame)
+            {
+                TogglePause();
+            }
+        }
+    }
+
     // ===================== PAUSE =====================
     public void TogglePause()
     {
@@ -30,27 +54,38 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
-        pausePanel.SetActive(true);
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(true);
+        }
         Time.timeScale = 0f;
-
-        // SFX (nếu có)
-        // AudioController.Instance.PlaySFX(SoundType.Click);
     }
 
     public void Resume()
     {
         isPaused = false;
-        pausePanel.SetActive(false);
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
         Time.timeScale = 1f;
-
-        // AudioController.Instance.PlaySFX(SoundType.Click);
     }
 
     // ===================== BUTTON =====================
     public void Restart()
     {
         Time.timeScale = 1f;
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.score = 0;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void LoadMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()

@@ -24,7 +24,7 @@ public class GameTimer : MonoBehaviour
 
     private void Update()
     {
-        if (timerIsRunning)
+        if (timerIsRunning && Time.timeScale > 0f)
         {
             if (timeRemaining > 0)
             {
