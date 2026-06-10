@@ -15,10 +15,20 @@ public class ClickCatch : MonoBehaviour
 
         if (hit.collider == null) return;
 
+        // Bấm vào Kraken → Game Over
+        KrakenMove kraken = hit.collider.GetComponent<KrakenMove>();
+        if (kraken != null)
+        {
+            if (GameOverManager.Instance != null)
+                GameOverManager.Instance.TriggerGameOver();
+            return;
+        }
+
+        // Bấm vào cá → bắt cá
         FishCatchable fish = hit.collider.GetComponent<FishCatchable>();
         if (fish != null)
         {
-            fish.TryCatch(); // 👉 chỉ gọi TryCatch
+            fish.TryCatch();
         }
     }
 }
