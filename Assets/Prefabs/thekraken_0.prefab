@@ -189,7 +189,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1794144625462973486, guid: 022d8cb53573ecd45ab4d8d7512c06ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KrakenMove
   speed: 5.5
   xoayNuocObject: {fileID: 2421008338128259983}
+  vortexDuration: 5
   eatEffectPrefab: {fileID: 0}
 --- !u!50 &-4761543726576493282
 Rigidbody2D:
