@@ -13,5 +13,7 @@ public enum SoundType
     MainMenu,
     LevelNormal,
     LevelEasy,
+    LevelHard,
+    LevelExtreme,
     Boss
 }

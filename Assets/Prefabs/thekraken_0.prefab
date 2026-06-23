@@ -213,9 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5929b6a5be182af40af6fac2954a03c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KrakenMove
-  speed: 5.5
+  speed: 1.5
   xoayNuocObject: {fileID: 2421008338128259983}
-  vortexDuration: 5
+  vortexDuration: 5.5
   eatEffectPrefab: {fileID: 0}
 --- !u!50 &-4761543726576493282
 Rigidbody2D:

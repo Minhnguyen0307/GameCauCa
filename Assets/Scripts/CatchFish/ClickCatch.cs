@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ClickCatch : MonoBehaviour
@@ -18,6 +18,15 @@ public class ClickCatch : MonoBehaviour
         // Bấm vào Kraken → Game Over
         KrakenMove kraken = hit.collider.GetComponent<KrakenMove>();
         if (kraken != null)
+        {
+            if (GameOverManager.Instance != null)
+                GameOverManager.Instance.TriggerGameOver();
+            return;
+        }
+
+        // Bấm vào Loch Ness Monster → Game Over
+        LochNessMonsterMove lochNess = hit.collider.GetComponent<LochNessMonsterMove>();
+        if (lochNess != null)
         {
             if (GameOverManager.Instance != null)
                 GameOverManager.Instance.TriggerGameOver();

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -20,12 +19,17 @@ public class MainMenuController : MonoBehaviour
 
     public void PlayEasyMode()
     {
-        SceneManager.LoadScene("Level_De");
+        SceneTransition.Instance.LoadScene("Level_De");
     }
 
     public void PlayNormalMode()
     {
-        SceneManager.LoadScene("Level_BinhThuong");
+        SceneTransition.Instance.LoadScene("Level_BinhThuong");
+    }
+
+    public void PlayHardMode()
+    {
+        SceneTransition.Instance.LoadScene("Level_Kho");
     }
 
     public void QuitGame()
