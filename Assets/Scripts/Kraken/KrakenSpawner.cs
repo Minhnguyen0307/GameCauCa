@@ -29,15 +29,13 @@ public class KrakenSpawner : MonoBehaviour
     [Tooltip("Giới hạn Y tối đa để spawn Kraken")]
     public float maxY = 2f;
 
-    // Tên scene duy nhất được phép spawn Kraken
-    private const string ALLOWED_SCENE = "Level_BinhThuong";
-
     void Start()
     {
-        // Chỉ chạy trong scene Level_BinhThuong
-        if (SceneManager.GetActiveScene().name != ALLOWED_SCENE)
+        // Chỉ chạy trong scene Level_BinhThuong, Level_Kho hoặc Level_CucKho
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName != "Level_BinhThuong" && sceneName != "Level_Kho" && sceneName != "Level_CucKho")
         {
-            Debug.Log($"[KrakenSpawner] Scene hiện tại không phải \"{ALLOWED_SCENE}\", Kraken sẽ không xuất hiện.");
+            Debug.Log($"[KrakenSpawner] Scene hiện tại không phải \"Level_BinhThuong\", \"Level_Kho\" hoặc \"Level_CucKho\", Kraken sẽ không xuất hiện.");
             enabled = false;
             return;
         }

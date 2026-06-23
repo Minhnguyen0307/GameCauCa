@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FishCatchable : MonoBehaviour
@@ -20,6 +20,7 @@ public class FishCatchable : MonoBehaviour
     public void TryCatch()
     {
         if (isCaught) return;
+        if (HieuUngDenManager.Instance != null && HieuUngDenManager.Instance.IsCatchDisabled) return;
 
         if (Random.value <= catchChance)
         {
@@ -37,6 +38,7 @@ public class FishCatchable : MonoBehaviour
     public void ForceCatch()
     {
         if (isCaught) return;
+        if (HieuUngDenManager.Instance != null && HieuUngDenManager.Instance.IsCatchDisabled) return;
         Catch();
     }
 

@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 037004b96490c8741a9212e05270b075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BombFall
-  fallSpeed: 2
+  fallSpeed: 3.5
 --- !u!114 &7997232450419982666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,5 +284,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
   damage: 1
-  explosionRadius: 4
+  explosionRadius: 5
   explosionEffectPrefab: {fileID: 592254438794623667, guid: d8fa3a0b124fa6d41869fade5941b26a, type: 3}
