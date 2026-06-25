@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
@@ -37,39 +37,42 @@ public class Bomb : MonoBehaviour
         Explode();
     }
 
-    void Explode()
+    public void Explode(bool noDamage = false)
     {
         exploded = true;
 
-        Collider2D[] hits =
-            Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-
-        // Dùng HashSet để tránh damage cùng một object nhiều lần
-        // (trường hợp object có nhiều collider)
-        var damagedObjects = new System.Collections.Generic.HashSet<GameObject>();
-
-        foreach (Collider2D hit in hits)
+        if (!noDamage)
         {
-            GameObject root = hit.attachedRigidbody != null
-                ? hit.attachedRigidbody.gameObject
-                : hit.gameObject;
+            Collider2D[] hits =
+                Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
-            if (damagedObjects.Contains(root)) continue;
-            damagedObjects.Add(root);
+            // Dùng HashSet để tránh damage cùng một object nhiều lần
+            // (trường hợp object có nhiều collider)
+            var damagedObjects = new System.Collections.Generic.HashSet<GameObject>();
 
-            // Chỉ damage qua Healt
-            Health hp = root.GetComponentInChildren<Health>();
-            if (hp != null)
+            foreach (Collider2D hit in hits)
             {
-                hp.TakeDamage(damage);
-                continue; // object có Health thì dùng Health xử lý, không Destroy thẳng
-            }
+                GameObject root = hit.attachedRigidbody != null
+                    ? hit.attachedRigidbody.gameObject
+                    : hit.gameObject;
 
-            // Object không có Health (cá bình thường) thì Destroy luôn
-            FishCatchable fish = root.GetComponent<FishCatchable>();
-            if (fish != null)
-            {
-                Destroy(root);
+                if (damagedObjects.Contains(root)) continue;
+                damagedObjects.Add(root);
+
+                // Chỉ damage qua Healt
+                Health hp = root.GetComponentInChildren<Health>();
+                if (hp != null)
+                {
+                    hp.TakeDamage(damage);
+                    continue; // object có Health thì dùng Health xử lý, không Destroy thẳng
+                }
+
+                // Object không có Health (cá bình thường) thì Destroy luôn
+                FishCatchable fish = root.GetComponent<FishCatchable>();
+                if (fish != null)
+                {
+                    Destroy(root);
+                }
             }
         }
 
@@ -79,7 +82,7 @@ public class Bomb : MonoBehaviour
         }
 
         if (AudioController.Instance != null)
-            AudioController.Instance.PlaySFX(SoundType.bomb);
+            AudioController.Instance.PlaySFX(SoundType.bomb, 0.5f);
 
         Destroy(gameObject);
     }

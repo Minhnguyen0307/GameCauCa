@@ -17,6 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_Kho.unity
     guid: 5339e6716c4b7ea4da04b229ee9f2cb3
+  - enabled: 1
+    path: Assets/Scenes/Level_CucDe.unity
+    guid: 7e70bf099ce149e6bc2aa50ef658b9aa
+  - enabled: 1
+    path: Assets/Scenes/Level_CucKho.unity
+    guid: 39e26033e24628c41a03217b1a3e6b28
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
+

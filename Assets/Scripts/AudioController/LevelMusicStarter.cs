@@ -19,6 +19,7 @@ public class LevelMusicStarter : MonoBehaviour
                 AudioController.Instance.PlayMusic(SoundType.LevelNormal);
                 break;
 
+            case "Level_CucDe":
             case "Level_De":
                 AudioController.Instance.PlayMusic(SoundType.LevelEasy);
                 break;

@@ -69,7 +69,7 @@ public class AudioController : MonoBehaviour
     }
 
     // ========= SOUND FX =========
-    public void PlaySFX(SoundType type)
+    public void PlaySFX(SoundType type, float volumeScale = 1f)
     {
         if (!sfxDict.ContainsKey(type))
         {
@@ -77,6 +77,6 @@ public class AudioController : MonoBehaviour
             return;
         }
 
-        sfxSource.PlayOneShot(sfxDict[type]);
+        sfxSource.PlayOneShot(sfxDict[type], volumeScale);
     }
 }

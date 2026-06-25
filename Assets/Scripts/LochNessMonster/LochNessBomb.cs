@@ -94,36 +94,39 @@ public class LochNessBomb : MonoBehaviour
         Explode();
     }
 
-    void Explode()
+    public void Explode(bool noDamage = false)
     {
         exploded = true;
 
-        // Tìm tất cả các collider trong bán kính vụ nổ
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-        System.Collections.Generic.HashSet<GameObject> damagedObjects = new System.Collections.Generic.HashSet<GameObject>();
-
-        foreach (Collider2D hit in hits)
+        if (!noDamage)
         {
-            GameObject root = hit.attachedRigidbody != null
-                ? hit.attachedRigidbody.gameObject
-                : hit.gameObject;
+            // Tìm tất cả các collider trong bán kính vụ nổ
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+            System.Collections.Generic.HashSet<GameObject> damagedObjects = new System.Collections.Generic.HashSet<GameObject>();
 
-            if (damagedObjects.Contains(root)) continue;
-            damagedObjects.Add(root);
-
-            // Gây sát thương nếu đối tượng có thành phần Health (như cá lớn)
-            Health hp = root.GetComponentInChildren<Health>();
-            if (hp != null)
+            foreach (Collider2D hit in hits)
             {
-                hp.TakeDamage(damage);
-                continue;
-            }
+                GameObject root = hit.attachedRigidbody != null
+                    ? hit.attachedRigidbody.gameObject
+                    : hit.gameObject;
 
-            // Nếu là cá thường thì tiêu diệt ngay lập tức
-            FishCatchable fish = root.GetComponent<FishCatchable>();
-            if (fish != null)
-            {
-                Destroy(root);
+                if (damagedObjects.Contains(root)) continue;
+                damagedObjects.Add(root);
+
+                // Gây sát thương nếu đối tượng có thành phần Health (như cá lớn)
+                Health hp = root.GetComponentInChildren<Health>();
+                if (hp != null)
+                {
+                    hp.TakeDamage(damage);
+                    continue;
+                }
+
+                // Nếu là cá thường thì tiêu diệt ngay lập tức
+                FishCatchable fish = root.GetComponent<FishCatchable>();
+                if (fish != null)
+                {
+                    Destroy(root);
+                }
             }
         }
 
@@ -136,7 +139,7 @@ public class LochNessBomb : MonoBehaviour
         // Phát âm thanh tiếng nổ bom
         if (AudioController.Instance != null)
         {
-            AudioController.Instance.PlaySFX(SoundType.bomb);
+            AudioController.Instance.PlaySFX(SoundType.bomb, 0.5f);
         }
 
         // Hủy quả bom sau khi nổ
