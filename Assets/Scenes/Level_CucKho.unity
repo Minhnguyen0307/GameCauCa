@@ -2662,8 +2662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KrakenSpawner
   krakenPrefab: {fileID: 2988457846266956772, guid: e05f12d684d408f41b8af483718613de, type: 3}
-  spawnDistance: 100
-  spawnInterval: 40
+  spawnDistance: 120
+  spawnInterval: 60
   spawnOnStart: 1
   minY: -2
   maxY: 2

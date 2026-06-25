@@ -17,6 +17,11 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    public void PlayVeryEasyMode()
+    {
+        SceneTransition.Instance.LoadScene("Level_CucDe");
+    }
+
     public void PlayEasyMode()
     {
         SceneTransition.Instance.LoadScene("Level_De");
@@ -30,6 +35,11 @@ public class MainMenuController : MonoBehaviour
     public void PlayHardMode()
     {
         SceneTransition.Instance.LoadScene("Level_Kho");
+    }
+
+    public void PlayVeryHardMode()
+    {
+        SceneTransition.Instance.LoadScene("Level_CucKho");
     }
 
     public void QuitGame()
