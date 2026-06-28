@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class FishMove : MonoBehaviour
 {
@@ -18,7 +18,8 @@ public class FishMove : MonoBehaviour
             return;
 
         float dir = moveRight ? 1f : -1f;
-        transform.Translate(Vector2.right * dir * speed * Time.deltaTime);
+        float speedFactor = (FishDoubleManager.Instance != null && FishDoubleManager.Instance.IsSlowDownActive) ? 0.5f : 1f;
+        transform.Translate(Vector2.right * dir * speed * speedFactor * Time.deltaTime);
     }
 
     void OnBecameInvisible()

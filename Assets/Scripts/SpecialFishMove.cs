@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class SpecialFishMove : MonoBehaviour
 {
@@ -17,7 +17,8 @@ public class SpecialFishMove : MonoBehaviour
         if (FishFreezeManager.Instance != null && FishFreezeManager.Instance.IsFrozen)
             return;
 
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        float speedFactor = (FishDoubleManager.Instance != null && FishDoubleManager.Instance.IsSlowDownActive) ? 0.5f : 1f;
+        transform.Translate(Vector3.left * speed * speedFactor * Time.deltaTime);
 
         float cameraLeft =
             cam.transform.position.x - cam.orthographicSize * cam.aspect;

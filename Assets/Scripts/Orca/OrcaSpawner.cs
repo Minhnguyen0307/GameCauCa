@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class OrcaSpawner : MonoBehaviour
@@ -34,5 +34,10 @@ public class OrcaSpawner : MonoBehaviour
         );
 
         Instantiate(orcaPrefab, spawnPos, Quaternion.identity);
+        if (FishDoubleManager.Instance != null && FishDoubleManager.Instance.IsDoubleActive)
+        {
+            Vector3 extraPos = spawnPos + new Vector3(0f, Random.Range(-0.3f, 0.3f), 0f);
+            Instantiate(orcaPrefab, extraPos, Quaternion.identity);
+        }
     }
 }

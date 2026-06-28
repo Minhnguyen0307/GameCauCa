@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class CrabMove : MonoBehaviour
 {
@@ -54,7 +54,8 @@ public class CrabMove : MonoBehaviour
         if (FishFreezeManager.Instance != null && FishFreezeManager.Instance.IsFrozen)
             return;
 
-        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+        float speedFactor = (FishDoubleManager.Instance != null && FishDoubleManager.Instance.IsSlowDownActive) ? 0.5f : 1f;
+        transform.Translate(Vector2.right * direction * speed * speedFactor * Time.deltaTime);
 
         transform.position = new Vector3(
             transform.position.x,
