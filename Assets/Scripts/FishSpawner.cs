@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class FishSpawner : MonoBehaviour
@@ -28,6 +28,11 @@ public class FishSpawner : MonoBehaviour
                 );
 
                 Instantiate(fishPrefab, spawnPos, Quaternion.identity);
+                if (FishDoubleManager.Instance != null && FishDoubleManager.Instance.IsDoubleActive)
+                {
+                    Vector3 extraPos = spawnPos + new Vector3(0f, Random.Range(-0.3f, 0.3f), 0f);
+                    Instantiate(fishPrefab, extraPos, Quaternion.identity);
+                }
             }
 
             yield return new WaitForSeconds(spawnDelay);

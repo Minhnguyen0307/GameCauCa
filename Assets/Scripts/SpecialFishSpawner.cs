@@ -38,5 +38,10 @@ public class SpecialFishSpawner : MonoBehaviour
         );
 
         Instantiate(specialFishPrefab, spawnPos, Quaternion.identity);
+        if (FishDoubleManager.Instance != null && FishDoubleManager.Instance.IsDoubleActive)
+        {
+            Vector3 extraPos = spawnPos + new Vector3(0f, Random.Range(-0.3f, 0.3f), 0f);
+            Instantiate(specialFishPrefab, extraPos, Quaternion.identity);
+        }
     }
 }
