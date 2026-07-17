@@ -82,7 +82,7 @@ public class Bomb : MonoBehaviour
         }
 
         if (AudioController.Instance != null)
-            AudioController.Instance.PlaySFX(SoundType.bomb, 0.5f);
+            AudioController.Instance.PlaySFX(SoundType.bomb, 0.75f);
 
         Destroy(gameObject);
     }

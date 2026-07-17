@@ -31,11 +31,11 @@ public class KrakenSpawner : MonoBehaviour
 
     void Start()
     {
-        // Chỉ chạy trong scene Level_BinhThuong, Level_Kho hoặc Level_CucKho
+        // Chỉ chạy trong scene Level_BinhThuong, Level_Kho, Level_CucKho hoặc Minigame
         string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName != "Level_BinhThuong" && sceneName != "Level_Kho" && sceneName != "Level_CucKho")
+        if (sceneName != "Level_BinhThuong" && sceneName != "Level_Kho" && sceneName != "Level_CucKho" && sceneName != "Minigame")
         {
-            Debug.Log($"[KrakenSpawner] Scene hiện tại không phải \"Level_BinhThuong\", \"Level_Kho\" hoặc \"Level_CucKho\", Kraken sẽ không xuất hiện.");
+            Debug.Log($"[KrakenSpawner] Scene hiện tại không phải \"Level_BinhThuong\", \"Level_Kho\", \"Level_CucKho\" hoặc \"Minigame\", Kraken sẽ không xuất hiện.");
             enabled = false;
             return;
         }

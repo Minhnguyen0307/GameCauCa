@@ -29,6 +29,7 @@ public class LevelMusicStarter : MonoBehaviour
                 break;
 
             case "Level_CucKho":
+            case "Minigame":
                 AudioController.Instance.PlayMusic(SoundType.LevelExtreme);
                 break;
 
