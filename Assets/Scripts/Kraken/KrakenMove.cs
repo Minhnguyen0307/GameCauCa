@@ -23,12 +23,42 @@ public class KrakenMove : MonoBehaviour
     [Header("Effects")]
     public GameObject eatEffectPrefab;
 
+    [Header("Minigame Health Settings")]
+    public int maxHP = 250;
+    private int currentHP
+    {
+        get
+        {
+            if (minigamePersistedHP == null)
+            {
+                minigamePersistedHP = maxHP;
+            }
+            return minigamePersistedHP.Value;
+        }
+        set
+        {
+            minigamePersistedHP = value;
+        }
+    }
+    private bool isMinigame = false;
+    public float hpTextOffsetY = 4f;
+    private TextMesh hpTextMesh;
+
+    private static int? minigamePersistedHP = null;
+
     // ── Private state ─────────────────────────────────────────────────────────
     private Camera mainCam;
     private float leftBoundary;
 
     private enum KrakenState { Moving, Vortex, Done }
     private KrakenState state = KrakenState.Moving;
+
+    public static void ResetMinigameHP()
+    {
+        minigamePersistedHP = null;
+    }
+
+    public static bool IsDead => minigamePersistedHP != null && minigamePersistedHP.Value <= 0;
 
     void Start()
     {
@@ -42,10 +72,95 @@ public class KrakenMove : MonoBehaviour
             xoayNuocObject.SetActive(false);
         else
             Debug.LogWarning("[KrakenMove] Chưa gán xoayNuocObject!");
+
+        isMinigame = FindObjectOfType<MinigameClickSpawner>() != null;
+        if (isMinigame)
+        {
+            Debug.Log($"[KrakenMove] Spawned in Minigame. Starting HP: {currentHP}/{maxHP}");
+
+            if (currentHP <= 0)
+            {
+                Debug.Log("[KrakenMove] Starting HP is 0 or less. Destroying immediately.");
+                Destroy(gameObject);
+                return;
+            }
+
+            CreateHPText();
+        }
+    }
+
+    private void CreateHPText()
+    {
+        GameObject textObj = new GameObject("MinigameHPText");
+        textObj.transform.SetParent(transform);
+        textObj.transform.localPosition = new Vector3(0, hpTextOffsetY, 0);
+
+        Vector3 parentScale = transform.localScale;
+        float sx = parentScale.x != 0 ? 1f / Mathf.Abs(parentScale.x) : 1f;
+        float sy = parentScale.y != 0 ? 1f / Mathf.Abs(parentScale.y) : 1f;
+        textObj.transform.localScale = new Vector3(sx, sy, 1f);
+
+        hpTextMesh = textObj.AddComponent<TextMesh>();
+        hpTextMesh.text = currentHP.ToString();
+        hpTextMesh.fontSize = 50;
+        hpTextMesh.characterSize = 0.08f;
+        hpTextMesh.anchor = TextAnchor.MiddleCenter;
+        hpTextMesh.alignment = TextAlignment.Center;
+        hpTextMesh.color = Color.yellow;
+        hpTextMesh.fontStyle = FontStyle.Bold;
+
+        MeshRenderer meshRenderer = textObj.GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            SpriteRenderer parentRenderer = GetComponent<SpriteRenderer>();
+            if (parentRenderer == null) parentRenderer = GetComponentInChildren<SpriteRenderer>();
+
+            if (parentRenderer != null)
+            {
+                meshRenderer.sortingLayerID = parentRenderer.sortingLayerID;
+                meshRenderer.sortingOrder = parentRenderer.sortingOrder + 10;
+            }
+            else
+            {
+                meshRenderer.sortingOrder = 100;
+            }
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (!isMinigame) return;
+
+        currentHP -= damage;
+        Debug.Log($"[KrakenMove] Took {damage} damage. Current HP: {currentHP}/{maxHP}");
+
+        if (currentHP <= 0)
+        {
+            Debug.Log("[KrakenMove] Kraken defeated!");
+            Destroy(gameObject);
+        }
     }
 
     void Update()
     {
+        if (isMinigame)
+        {
+            if (currentHP <= 0)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            if (hpTextMesh != null)
+            {
+                string hpStr = currentHP.ToString();
+                if (hpTextMesh.text != hpStr)
+                {
+                    hpTextMesh.text = hpStr;
+                }
+            }
+        }
+
         switch (state)
         {
             case KrakenState.Moving:

@@ -10,18 +10,6 @@ public class PhaHuyBomSpawner : MonoBehaviour
 
     private Camera cam;
 
-    // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    // private static void OnSceneLoaded()
-    // {
-    //     string sceneName = SceneManager.GetActiveScene().name;
-    //     if (sceneName == "Level_CucKho")
-    //     {
-    //         GameObject spawner = new GameObject("PhaHuyBomSpawner_Auto");
-    //         spawner.AddComponent<PhaHuyBomSpawner>();
-    //         Debug.Log("[PhaHuyBomSpawner] Automatically initialized in Level_CucKho scene.");
-    //     }
-    // }
-
     private void Start()
     {
         cam = Camera.main;

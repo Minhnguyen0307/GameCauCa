@@ -9,6 +9,14 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider2D))]
 public class KrakenClickHandler : MonoBehaviour
 {
+    void Start()
+    {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Minigame")
+        {
+            enabled = false;
+        }
+    }
+
     void Update()
     {
         // Chỉ xử lý khi game chưa over và có click trái

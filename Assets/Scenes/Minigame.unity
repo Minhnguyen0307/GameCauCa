@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LochNessMonsterSpawner
   lochNessPrefab: {fileID: 2301742771295280258, guid: f8bf4240cdfd87640aaeeb0eced694f6, type: 3}
-  spawnOffset: 5
-  spawnInterval: 40
+  spawnOffset: 10
+  spawnInterval: 15
   spawnOnStart: 1
   minY: -3
   maxY: 3
@@ -877,6 +877,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50302eea0396e1f48b7d8a5e63d5e0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
+  timeRemaining: 120
+  timerIsRunning: 0
+  timerText: {fileID: 0}
+  timeUpPanel: {fileID: 0}
+  finalScoreText: {fileID: 0}
 --- !u!1 &432248359
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &432248360
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1038,7 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0ff3e3b74cd7d45aed9b4712ab8538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  timeRemaining: 300
+  timeRemaining: 420
   timerIsRunning: 0
   timerText: {fileID: 2049485591}
   timeUpPanel: {fileID: 855362967}
@@ -2751,8 +2756,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KrakenSpawner
   krakenPrefab: {fileID: 2988457846266956772, guid: e05f12d684d408f41b8af483718613de, type: 3}
-  spawnDistance: 120
-  spawnInterval: 60
+  spawnDistance: 70
+  spawnInterval: 20
   spawnOnStart: 1
   minY: -2
   maxY: 2
@@ -2787,7 +2792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1024432233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2974,8 +2979,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1097843603}
-  - component: {fileID: 1097843602}
-  - component: {fileID: 1097843604}
+  - component: {fileID: 1097843605}
+  - component: {fileID: 1097843606}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2983,18 +2988,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1097843602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097843601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2741e8973de1144fb4912e10af21d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickCatch
 --- !u!4 &1097843603
 Transform:
   m_ObjectHideFlags: 0
@@ -3010,7 +3003,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1097843604
+--- !u!114 &1097843605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3019,15 +3012,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1097843601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e9d8d2ceb4d33441a08fd03c87e4cdd, type: 3}
+  m_Script: {fileID: 11500000, guid: e9772b3f7d484ec2af223ced2ac80716, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FishingRodCursor
-  fishingRodCursor: {fileID: 2800000, guid: 393b8f815f27df8449e538904be88415, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::TargetLockCursor
+  targetLockTexture: {fileID: 2800000, guid: 13589ce856c1b3a4cbf591f5dab7ecc5, type: 3}
   useSoftwareCursor: 1
-  cursorWidth: 80
-  cursorHeight: 100
+  cursorWidth: 64
+  cursorHeight: 64
   offsetX: 0
-  offsetY: 40
+  offsetY: 0
+--- !u!114 &1097843606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097843601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7c76ffb85f42f99ab4086536ba8b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameClickSpawner
+  bombPrefab: {fileID: 8637634583194292597, guid: 5ca334a8101f87f428c7c1025a181a92, type: 3}
+  spawnCooldown: 0.75
 --- !u!1 &1145812446
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,7 +3247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1222875093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4258,7 +4265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0110i\u1EC3m: 0"
+  m_text: "Thi\u1EC7t h\u1EA1i: 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4680,8 +4687,8 @@ Transform:
   m_GameObject: {fileID: 1998866670}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0111, y: 0, z: 0}
-  m_LocalScale: {x: 7.66929, y: 5.567679, z: 1}
+  m_LocalPosition: {x: 0.0019, y: 0, z: 0}
+  m_LocalScale: {x: 7.530341, y: 5.567679, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4933,7 +4940,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time: 05:00'
+  m_text: 'Time: 07:00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5021,7 +5028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2066415224
 MonoBehaviour:
   m_ObjectHideFlags: 0

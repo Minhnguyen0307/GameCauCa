@@ -167,6 +167,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &12542332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 12542334}
+  - component: {fileID: 12542333}
+  m_Layer: 0
+  m_Name: ClockSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &12542333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12542332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e665355b28a1df4890ef5f458cf5217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClockSpawner
+  clockPrefab: {fileID: 7582131031175947269, guid: 7ce00634673779944b98e8cada73db14, type: 3}
+  spawnInterval: 30
+  spawnDistance: 2
+--- !u!4 &12542334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12542332}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &44134520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,6 +2505,8 @@ MonoBehaviour:
   useSoftwareCursor: 1
   cursorWidth: 80
   cursorHeight: 100
+  offsetX: 0
+  offsetY: 40
 --- !u!1 &1102564625
 GameObject:
   m_ObjectHideFlags: 0
@@ -4254,3 +4303,4 @@ SceneRoots:
   - {fileID: 422262960}
   - {fileID: 1297498339}
   - {fileID: 7278951}
+  - {fileID: 12542334}

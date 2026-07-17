@@ -47,6 +47,12 @@ public class AudioController : MonoBehaviour
             if (!musicDict.ContainsKey(music.type))
                 musicDict.Add(music.type, music.clip);
         }
+
+        // ===== Load Volumes =====
+        float musicVol = PlayerPrefs.GetFloat("MusicVolume", 0.8f);
+        float sfxVol = PlayerPrefs.GetFloat("SFXVolume", 0.8f);
+        if (musicSource != null) musicSource.volume = musicVol;
+        if (sfxSource != null) sfxSource.volume = sfxVol;
     }
 
     // ========= MUSIC =========
@@ -78,5 +84,28 @@ public class AudioController : MonoBehaviour
         }
 
         sfxSource.PlayOneShot(sfxDict[type], volumeScale);
+    }
+
+    // ========= VOLUME SETTINGS =========
+    public float MusicVolume
+    {
+        get { return musicSource != null ? musicSource.volume : 0f; }
+        set
+        {
+            if (musicSource != null) musicSource.volume = value;
+            PlayerPrefs.SetFloat("MusicVolume", value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public float SFXVolume
+    {
+        get { return sfxSource != null ? sfxSource.volume : 0f; }
+        set
+        {
+            if (sfxSource != null) sfxSource.volume = value;
+            PlayerPrefs.SetFloat("SFXVolume", value);
+            PlayerPrefs.Save();
+        }
     }
 }

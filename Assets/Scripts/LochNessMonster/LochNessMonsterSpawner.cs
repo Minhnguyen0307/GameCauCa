@@ -30,11 +30,11 @@ public class LochNessMonsterSpawner : MonoBehaviour
 
     void Start()
     {
-        // Chỉ chạy trong scene Level_CucKho
+        // Chỉ chạy trong scene Level_CucKho hoặc Minigame
         string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName != "Level_CucKho")
+        if (sceneName != "Level_CucKho" && sceneName != "Minigame")
         {
-            Debug.Log($"[LochNessMonsterSpawner] Scene hiện tại không phải \"Level_CucKho\". Loch Ness Monster sẽ không xuất hiện.");
+            Debug.Log($"[LochNessMonsterSpawner] Scene hiện tại không phải \"Level_CucKho\" hoặc \"Minigame\". Loch Ness Monster sẽ không xuất hiện.");
             enabled = false;
             return;
         }
